@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% extends "indexpage.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-body">
+              <h5 class="card-title">DISPLAY DEPARTMENT</h5>
+			  <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">DOCTOR NAME</th>
+                    <th scope="col">DEPARTMENT</th>
+                    <th scope="col">EXPERIENCE</th>
+                    <th scope="col">EDUCATION</th>
+                    <th scope="col">REGISTER NO</th>
+                    <th scope="col">LANGUAGE</th>
+                    <th scope="col">ABOUT</th>
+                    <th scope="col">GENDER</th>
+                    <th scope="col">TIMING</th>
+                    <th scope="col">IMAGE</th>
+                    <th scope="col">EDIT</th>
+                    <th scope="col">DELETE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for i in data %}
+                  <tr>
+                    <td>{{i.Name}}</td>
+                    <td>{{i.Department}}</td>
+                    <td>{{i.Experience}}</td>
+                    <td>{{i.Education}}</td>
+                    <td>{{i.Registrations}}</td>
+                    <td>{{i.Language}}</td>
+                    <td>{{i.About}}</td>
+                    <td>{{i.Gender}}</td>
+                    <td>{{i.Timing}}</td>
+                    <td>
+                        <img src="{{i.Image.url}}" height="50px" width="50px">
+                    </td>
+                    <td>
+                        <form action="{% url 'doctoredit' dataid=i.id %}">
+                            <button class="btn btn-light px-5" >EDIT</button>
+                        </form>
+                    </td>
+                      <td>
+                        <form action="{% url 'doctordel' dataid=i.id %}">
+                            <button class="btn btn-light px-5" >DELETE</button>
+                        </form>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            </div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    {% if messages %}
+      {% for i in messages %}
+           {% if i.tags == 'warning' %}
+               <script>
+                    swal('{{i}}','','warning');
+               </script>
+           {% elif i.tags == 'error' %}
+               <script>
+                    swal('{{i}}','','error');
+               </script>
+           {% else %}
+               <script>
+                    swal('{{i}}','','success');
+               </script>
+           {% endif %}
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
+{% endblock %}
