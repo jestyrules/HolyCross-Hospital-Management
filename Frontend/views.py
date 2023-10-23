@@ -14,7 +14,7 @@ from django.template.loader import render_to_string
 from io import BytesIO
 from django.template.loader import get_template
 from django.views import View
-from xhtml2pdf import pisa
+
 
 
 # Create your views here.
