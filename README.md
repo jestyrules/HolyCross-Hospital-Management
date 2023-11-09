@@ -1,3 +1,10 @@
+# Enviorment Actvate:
+cd HolyCross.github.io> 
+venv\Scripts\activate
+
+**Username**: JESTY
+**Password**: 1234
+
 # HolyCross.github.io
 HolyCross is a web-based application designed to help hospitals to appointment scheduling process for patients who want to consult with specific doctors. 
 Project Title: HolyCross - Hospital Management
